@@ -1,0 +1,49 @@
+# Dependencias
+node_modules/
+pnpm-lock.yaml
+
+# Archivos de entorno
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Directorios de build/generados
+dist/
+build/
+out/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de IDE/editores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Archivos temporales
+*.tmp
+*.temp
+.cache/
+
+# Archivos de configuración personal
+.vscode/settings.json
+
+# Archivos de MongoDB (si usas MongoDB localmente)
+data/db/
