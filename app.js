@@ -23,7 +23,6 @@ mongoose
     .connect(process.env.MONGODB_URI)
     .then(() => {
         console.log('✅ Conectado a MongoDB');
-        // Iniciar el servidor solo si la conexión es exitosa
         app.listen(PORT, () => {
             console.log(`🚀 Servidor escuchando en http://localhost:${PORT}`);
         });
