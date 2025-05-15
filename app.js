@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import rutasMensajes from './routes/mensajes.routes.js';
 
 // Cargar variables de entorno del archivo .env
 dotenv.config();
@@ -11,6 +12,8 @@ const app = express();
 // Middleware para leer JSON y permitir peticiones externas
 app.use(express.json());
 app.use(cors());
+
+app.use('/api', rutasMensajes); // Ahora tus rutas serán /api/historial, etc.
 
 // Puerto donde se ejecutará la app
 const PORT = process.env.PORT || 3200;
