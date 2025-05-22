@@ -13,7 +13,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use('/api', rutasMensajes); // Ahora tus rutas serán /api/historial, etc.
+// Servir archivos estáticos desde la carpeta 'public'
+app.use(express.static('public'));
+
+// Rutas API
+app.use('/api', rutasMensajes);
 
 // Puerto donde se ejecutará la app
 const PORT = process.env.PORT || 3200;
@@ -30,8 +34,3 @@ mongoose
     .catch((error) => {
         console.error('❌ Error al conectar a MongoDB:', error);
     });
-
-// Ruta de prueba
-app.get('/', (req, res) => {
-    res.send('Servidor funcionando correctamente');
-});
