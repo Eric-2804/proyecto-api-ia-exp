@@ -55,3 +55,10 @@ btnEliminar.addEventListener('click', async () => {
 
 window.addEventListener('DOMContentLoaded', cargarHistorial);
 
+const btnExportar = document.getElementById('btnExportar');
+
+btnExportar.addEventListener('click', () => {
+    window.open('/api/exportar-pdf', '_blank');
+});
+
+

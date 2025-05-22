@@ -125,3 +125,42 @@ export const limpiarHistorial = async (req, res) => {
         res.status(500).json({ error: 'No se pudo limpiar el historial.' });
     }
 };
+
+import PDFDocument from 'pdfkit';
+import { Readable } from 'stream';
+
+// GET: exportar historial como PDF
+export const exportarHistorialPDF = async (req, res) => {
+    try {
+        const mensajes = await Mensaje.find().sort({ fecha: 1 });
+
+        const doc = new PDFDocument();
+        const stream = Readable.from(doc);
+
+        // Configurar cabecera para que el navegador lo descargue
+        res.setHeader('Content-disposition', 'attachment; filename="historial.pdf"');
+        res.setHeader('Content-type', 'application/pdf');
+
+        // Pipear el PDF a la respuesta
+        doc.pipe(res);
+
+        doc.fontSize(16).text('Historial de Conversación entre Expertos', {
+            align: 'center',
+        });
+
+        doc.moveDown();
+
+        mensajes.forEach((m) => {
+            doc.fontSize(12).text(
+                `${m.autor === 'experto1' ? 'Experto 1' : 'Experto 2'}:\n${m.texto}\n`,
+                { lineGap: 10 }
+            );
+            doc.moveDown();
+        });
+
+        doc.end();
+    } catch (error) {
+        console.error('Error al exportar PDF:', error);
+        res.status(500).json({ error: 'No se pudo generar el PDF.' });
+    }
+};
