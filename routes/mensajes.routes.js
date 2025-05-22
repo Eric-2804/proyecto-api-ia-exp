@@ -2,6 +2,8 @@
 import express from 'express';
 import { obtenerHistorial, guardarMensaje } from '../controllers/mensajes.controller.js';
 import { generarRespuestaExperto1 } from '../controllers/mensajes.controller.js';
+import { generarRespuestaExperto2 } from '../controllers/mensajes.controller.js';
+import { limpiarHistorial } from '../controllers/mensajes.controller.js';
 
 const router = express.Router();
 
@@ -13,6 +15,12 @@ router.post('/mensaje', guardarMensaje);
 
 //Ruta POST para generar respuesta del experto 1
 router.post('/generar-respuesta-experto1', generarRespuestaExperto1);
+
+//Ruta POST para generar respuesta del experto 2
+router.post('/generar-respuesta-experto2', generarRespuestaExperto2);
+
+//Ruta POST para limpiar el historial de los expertos
+router.delete('/historial', limpiarHistorial);
 
 
 export default router;

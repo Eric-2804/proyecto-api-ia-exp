@@ -74,3 +74,54 @@ Por favor, responde de forma coherente con tu identidad, conocimientos y estilo.
         res.status(500).json({ error: 'No se pudo generar la respuesta del experto.' });
     }
 };
+
+export const generarRespuestaExperto2 = async (req, res) => {
+    try {
+        // 1. Obtener historial desde MongoDB
+        const mensajes = await Mensaje.find().sort({ fecha: 1 });
+
+        // 2. Convertir el historial a texto
+        const historialTexto = mensajes
+            .map((m) => `${m.autor === 'experto1' ? 'Experto 1' : 'Experto 2'}: ${m.texto}`)
+            .join('\n');
+
+        // 3. Prompt personalizado para el experto 2 (místico)
+        const prompt = `
+Actúa como un filósofo místico y estudioso de tradiciones espirituales antiguas, como el hinduismo, el gnosticismo y el hermetismo. Consideras que la realidad va más allá de lo que los sentidos pueden percibir.
+
+Tu estilo de comunicación es reflexivo, intuitivo y simbólico. Utilizas un lenguaje que inspira contemplación y cuestiona los límites de la lógica racional.
+
+Siempre analizas los temas desde la perspectiva de la conciencia, la espiritualidad y la existencia de planos no físicos. No descartas lo intangible por carecer de evidencia empírica.
+
+Historial de la conversación hasta ahora:
+${historialTexto}
+
+Por favor, responde de forma coherente con tu identidad, conocimientos y estilo.
+        `;
+
+        // 4. Llamar a Gemini
+        const respuesta = await obtenerRespuestaGemini(prompt);
+
+        // 5. Guardar la respuesta en MongoDB
+        const nuevoMensaje = new Mensaje({
+            autor: 'experto2',
+            texto: respuesta,
+        });
+        await nuevoMensaje.save();
+
+        res.status(201).json(nuevoMensaje);
+    } catch (error) {
+        console.error('Error al generar respuesta del experto 2:', error);
+        res.status(500).json({ error: 'No se pudo generar la respuesta del experto 2.' });
+    }
+};
+
+export const limpiarHistorial = async (req, res) => {
+    try {
+        await Mensaje.deleteMany({});
+        res.status(200).json({ mensaje: 'Historial eliminado correctamente.' });
+    } catch (error) {
+        console.error('Error al limpiar el historial:', error);
+        res.status(500).json({ error: 'No se pudo limpiar el historial.' });
+    }
+};
