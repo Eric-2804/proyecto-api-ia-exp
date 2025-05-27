@@ -1,64 +1,64 @@
-const bodyChat = document.querySelector('.body');
-const [btnIA1, btnEliminar, btnIA2] = document.querySelectorAll('button');
+console.log('chat.js cargado correctamente');
 
-// Crea y muestra un mensaje visualmente
-const crearMensaje = (autor, texto) => {
-    const p = document.createElement('p');
-    p.className = autor === 'experto1' ? 'msgiauno' : 'mgsiados';
-    p.textContent = texto;
-    bodyChat.appendChild(p);
-};
+document.addEventListener('DOMContentLoaded', () => {
+  const btnIA1 = document.getElementById('btnIA1');
+  const btnIA2 = document.getElementById('btnIA2');
+  const btnEliminar = document.getElementById('btnEliminar');
+  const btnExportar = document.getElementById('btnExportar');
+  const chatBody = document.getElementById('chatBody');
 
-// Cargar historial al entrar
-const cargarHistorial = async () => {
+  // Función para crear mensajes
+  async function agregarMensajeIA(claseMensaje, url, avatarUrl, alineacion = 'izquierda') {
+    const wrapper = document.createElement('div');
+    wrapper.style.display = 'flex';
+    wrapper.style.alignItems = 'flex-start';
+    wrapper.style.marginBottom = '10px';
+    wrapper.style.flexDirection = alineacion === 'derecha' ? 'row-reverse' : 'row';
+
+    const avatar = document.createElement('img');
+    avatar.src = avatarUrl;
+    avatar.className = 'avatar';
+
+    const mensaje = document.createElement('div');
+    mensaje.className = claseMensaje;
+    mensaje.textContent = 'Escribiendo...';
+
+    wrapper.appendChild(avatar);
+    wrapper.appendChild(mensaje);
+    chatBody.appendChild(wrapper);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
     try {
-        const res = await fetch('/api/historial');
-        const historial = await res.json();
-        bodyChat.innerHTML = '';
-        historial.forEach(m => crearMensaje(m.autor, m.texto));
-    } catch (err) {
-        console.error('Error cargando historial:', err);
+      const res = await fetch(url, { method: 'POST' });
+      const data = await res.json();
+      mensaje.textContent = data.texto || 'Respuesta vacía';
+    } catch (error) {
+      mensaje.textContent = 'Error al obtener respuesta';
     }
-};
+  }
 
-// IA 1 responde
-btnIA1.addEventListener('click', async () => {
-    try {
-        const res = await fetch('/api/generar-respuesta-experto1', { method: 'POST' });
-        const msg = await res.json();
-        crearMensaje(msg.autor, msg.texto);
-    } catch (err) {
-        console.error('Error al generar respuesta IA 1:', err);
-    }
+  btnIA1.addEventListener('click', () => {
+    agregarMensajeIA('msgiauno', '/api/generar-respuesta-experto1', './imagenes/IA1.png', 'izquierda');
+  });
+
+  btnIA2.addEventListener('click', () => {
+    agregarMensajeIA('mgsiados', '/api/generar-respuesta-experto2', './imagenes/IA2.png', 'derecha');
+  });
+
+  btnEliminar.addEventListener('click', async () => {
+    await fetch('/api/historial', { method: 'DELETE' });
+    chatBody.innerHTML = '';
+  });
+
+  btnExportar.addEventListener('click', () => {
+    const element = chatBody;
+    const opt = {
+      margin: 0.5,
+      filename: 'chat.pdf',
+      image: { type: 'pdf', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+  });
 });
-
-// IA 2 responde
-btnIA2.addEventListener('click', async () => {
-    try {
-        const res = await fetch('/api/generar-respuesta-experto2', { method: 'POST' });
-        const msg = await res.json();
-        crearMensaje(msg.autor, msg.texto);
-    } catch (err) {
-        console.error('Error al generar respuesta IA 2:', err);
-    }
-});
-
-// Eliminar historial
-btnEliminar.addEventListener('click', async () => {
-    try {
-        await fetch('/api/historial', { method: 'DELETE' });
-        bodyChat.innerHTML = '';
-    } catch (err) {
-        console.error('Error al eliminar historial:', err);
-    }
-});
-
-window.addEventListener('DOMContentLoaded', cargarHistorial);
-
-const btnExportar = document.getElementById('btnExportar');
-
-btnExportar.addEventListener('click', () => {
-    window.open('/api/exportar-pdf', '_blank');
-});
-
-

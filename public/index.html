@@ -6,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
     <link rel="stylesheet" href="chat.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 
 </head>
 <body>
 
     <div class="container">
         <div class="header">
+            <div class="head2">
             <h1>WEB CHAT</h1>
+        </div>
+            <div class="dropdown">
+                <button class="dropbtn">⋮</button>
+                <div class="dropdown-content">
+                    <button id="btnExportar">EXPORTAR PDF</button>
+                </div>
+              </div>
         </div>
         <div class="body" id="chatBody">
             
@@ -22,7 +32,7 @@
             <button id="btnIA1">IA 1 </button>
             <button id="btnEliminar">ELIMINAR CHAT </button>
             <button id="btnIA2">IA 2 </button>
-            <button id="btnExportar">EXPORTAR PDF</button>
+            
         </div>
 
     </div>
