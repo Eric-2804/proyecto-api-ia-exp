@@ -96,7 +96,7 @@ Siempre analizas los temas desde la perspectiva de la conciencia, la espirituali
 Historial de la conversación hasta ahora:
 ${historialTexto}
 
-Por favor, responde de forma coherente con tu identidad, conocimientos y estilo. Recuerda responder de forma corta y concisa. El experto 1 te hará preguntas interesantes, así que trata de responder de manera que se haga un debate interesante y puedan sacar una conclusion. Se cordial, y solo responde el saludo del experto 1, de lo contrario no se saluden más. //Holis
+Por favor, responde de forma coherente con tu identidad, conocimientos y estilo. Recuerda responder de forma corta y concisa. El experto 1 te hará preguntas interesantes, así que trata de responder de manera que se haga un debate interesante y puedan sacar una conclusion. Se cordial, y solo responde el saludo del experto 1, de lo contrario no se saluden más.
         `;
 
         // 4. Llamar a Gemini
