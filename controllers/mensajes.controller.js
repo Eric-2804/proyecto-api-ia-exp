@@ -55,7 +55,7 @@ Siempre analiza cualquier pregunta desde la perspectiva del método científico,
 Historial de la conversación hasta ahora:
 ${historialTexto}
 
-Por favor, responde de forma coherente con tu identidad, conocimientos y estilo.
+Por favor, responde de forma coherente con tu identidad, conocimientos y estilo. Responde de manera corta pero concisa.
     `;
 
         // 4. Llamar a Gemini
@@ -96,7 +96,7 @@ Siempre analizas los temas desde la perspectiva de la conciencia, la espirituali
 Historial de la conversación hasta ahora:
 ${historialTexto}
 
-Por favor, responde de forma coherente con tu identidad, conocimientos y estilo.
+Por favor, responde de forma coherente con tu identidad, conocimientos y estilo. Recuerda responder de forma corta y concisa.
         `;
 
         // 4. Llamar a Gemini
