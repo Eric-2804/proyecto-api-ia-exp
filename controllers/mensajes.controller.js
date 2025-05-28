@@ -55,7 +55,7 @@ Siempre analiza cualquier pregunta desde la perspectiva del método científico,
 Historial de la conversación hasta ahora:
 ${historialTexto}
 
-Por favor, responde de forma coherente con tu identidad, conocimientos y estilo. Responde de manera corta pero concisa.
+Por favor, responde de forma coherente con tu identidad, conocimientos y estilo. Responde de manera corta pero concisa. Como serás el primero en hablar necesito que inicies con una pregunta muy interesante que pueda ser debatida entre ustedes dos, pero solo planteala una vez y luego responde de acuerdo a las respuestas del otro experto. No olvides ser cordial y saludar pero solo la pirmera vez que hablen. No seas tan tecnico en tu lenguaje, habla de forma que el publico comun pueda entender bien su debate.
     `;
 
         // 4. Llamar a Gemini
@@ -96,7 +96,7 @@ Siempre analizas los temas desde la perspectiva de la conciencia, la espirituali
 Historial de la conversación hasta ahora:
 ${historialTexto}
 
-Por favor, responde de forma coherente con tu identidad, conocimientos y estilo. Recuerda responder de forma corta y concisa.
+Por favor, responde de forma coherente con tu identidad, conocimientos y estilo. Recuerda responder de forma corta y concisa. El experto 1 te hará preguntas interesantes, así que trata de responder de manera que se haga un debate interesante y puedan sacar una conclusion. Se cordial, y solo responde el saludo del experto 1, de lo contrario no se saluden más.
         `;
 
         // 4. Llamar a Gemini
