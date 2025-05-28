@@ -6,13 +6,16 @@
 }
 
 body{
-    height:100vh;
-    background-color:#c7e5f4;
+    height:100vh; 
+   
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(-1deg,#2cb9ff, #ffffff);
+    background-size: 200% 200%;
+    
+  }
 
-}
 .container{
 width: 900px;
 height: 90vh;
@@ -20,7 +23,7 @@ display: flex;
 flex-direction: column;
 box-shadow: 2px 2px 20px rgba(0,0,0,4);
 background-color: #c6e3f1;
-border-radius: 3rem;
+border-radius: 1rem;
 }
 
 
@@ -30,7 +33,6 @@ border-radius: 3rem;
 display: flex;
 justify-content: space-between;
 align-items: center;
-border-radius: 3rem;
 padding: 10px 20px;
  }
 
@@ -89,7 +91,7 @@ text-align: center;
     align-items: center;
     padding: 10px 150px; 
     background-color: #BEE3F6;
-    border-radius: 3rem;
+    border-radius: 1rem;
 }
 .footer button {
     width: 100px;
