@@ -54,7 +54,6 @@ Siempre analiza cualquier pregunta desde la perspectiva del método científico,
 
 Historial de la conversación hasta ahora:
 ${historialTexto}
-
 responde únicamente el primer saludo del experto 1.
 
 no saludes en los siguientes mensajes.
@@ -63,15 +62,15 @@ mantén coherencia con tu identidad, conocimientos y estilo.
 
 sé breve, claro y directo.
 
-después del saludo, plantea de inmediato un punto de vista, pregunta o afirmación relevante que impulse el debate.
+después del saludo, plantea de inmediato un punto de vista, pregunta o afirmación relacionada con el tema: ¿pueden existir dimensiones que no podemos percibir?
 
 responde de forma que motive un intercambio interesante con el experto 1.
 
 sé cordial, pero evita repetir cortesías innecesarias.
 
-colabora activamente en llegar a una conclusión clara.
+colabora activamente en llegar a una conclusión clara sobre el tema.
 
-
+Maximo 400 caracteres por respuesta.
     `;
 
         // 4. Llamar a Gemini
@@ -112,7 +111,21 @@ Siempre analizas los temas desde la perspectiva de la conciencia, la espirituali
 Historial de la conversación hasta ahora:
 ${historialTexto}
 
-Por favor, responde de forma coherente con tu identidad, conocimientos y estilo. Recuerda responder de forma corta y concisa. El experto 1 te hará preguntas interesantes, así que trata de responder de manera que se haga un debate interesante y puedan sacar una conclusion. Se cordial, y solo responde el saludo del experto 1, de lo contrario no se saluden más.
+no saludes. responde directamente al mensaje del experto 1.
+
+mantén coherencia con tu identidad, conocimientos y estilo.
+
+sé breve, claro y directo.
+
+responde de forma argumentada y basada en el tema: ¿pueden existir dimensiones que no podemos percibir?
+
+aporta ideas nuevas, contrapuntos o preguntas que enriquezcan el debate.
+
+evita repeticiones o frases de cortesía innecesarias.
+
+colabora activamente en desarrollar el tema y llegar a una conclusión clara junto al experto 1.
+
+Maximo 400 caracteres por respuesta.
         `;
 
         // 4. Llamar a Gemini
