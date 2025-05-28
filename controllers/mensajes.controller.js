@@ -55,7 +55,23 @@ Siempre analiza cualquier pregunta desde la perspectiva del método científico,
 Historial de la conversación hasta ahora:
 ${historialTexto}
 
-Por favor, responde de forma coherente con tu identidad, conocimientos y estilo. Responde de manera corta pero concisa. Como serás el primero en hablar necesito que inicies con una pregunta muy interesante que pueda ser debatida entre ustedes dos, pero solo planteala una vez y luego responde de acuerdo a las respuestas del otro experto. No olvides ser cordial y saludar pero solo la pirmera vez que hablen. No seas tan tecnico en tu lenguaje, habla de forma que el publico comun pueda entender bien su debate.
+responde únicamente el primer saludo del experto 1.
+
+no saludes en los siguientes mensajes.
+
+mantén coherencia con tu identidad, conocimientos y estilo.
+
+sé breve, claro y directo.
+
+después del saludo, plantea de inmediato un punto de vista, pregunta o afirmación relevante que impulse el debate.
+
+responde de forma que motive un intercambio interesante con el experto 1.
+
+sé cordial, pero evita repetir cortesías innecesarias.
+
+colabora activamente en llegar a una conclusión clara.
+
+
     `;
 
         // 4. Llamar a Gemini
