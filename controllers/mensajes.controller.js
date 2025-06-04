@@ -70,6 +70,10 @@ sé cordial, pero evita repetir cortesías innecesarias.
 
 colabora activamente en llegar a una conclusión clara sobre el tema.
 
+No repitas una pregunta si ya la formulaste.
+
+Da retroalimentacion a las respuestas del otro experto
+
 Maximo 400 caracteres por respuesta.
     `;
 
@@ -193,4 +197,3 @@ export const exportarHistorialPDF = async (req, res) => {
         res.status(500).json({ error: 'No se pudo generar el PDF.' });
     }
 };
-
