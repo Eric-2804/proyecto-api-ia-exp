@@ -36,15 +36,15 @@ import { obtenerRespuestaGemini } from '../services/gemini.service.js';
 
 export const generarRespuestaExperto1 = async (req, res) => {
     try {
-        // 1. Obtener historial desde MongoDB
+        // Obtener historial desde MongoDB
         const mensajes = await Mensaje.find().sort({ fecha: 1 });
 
-        // 2. Convertir el historial a texto
+        //  Convertir el historial a texto
         const historialTexto = mensajes
             .map((m) => `${m.autor === 'experto1' ? 'Experto 1' : 'Experto 2'}: ${m.texto}`)
             .join('\n');
 
-        // 3. Armar prompt para el experto 1
+        // prompt para el experto 1
         const prompt = `
 Actúa como un físico teórico con décadas de experiencia en campos como la relatividad general, la mecánica cuántica y la teoría de cuerdas.
 
@@ -77,10 +77,10 @@ Da retroalimentacion a las respuestas del otro experto
 Maximo 400 caracteres por respuesta.
     `;
 
-        // 4. Llamar a Gemini
+      
         const respuesta = await obtenerRespuestaGemini(prompt);
 
-        // 5. Guardar la respuesta en MongoDB
+       
         const nuevoMensaje = new Mensaje({
             autor: 'experto1',
             texto: respuesta,
@@ -96,15 +96,15 @@ Maximo 400 caracteres por respuesta.
 
 export const generarRespuestaExperto2 = async (req, res) => {
     try {
-        // 1. Obtener historial desde MongoDB
+        //  Obtener historial desde MongoDB
         const mensajes = await Mensaje.find().sort({ fecha: 1 });
 
-        // 2. Convertir el historial a texto
+        //  Convertir el historial a texto
         const historialTexto = mensajes
             .map((m) => `${m.autor === 'experto1' ? 'Experto 1' : 'Experto 2'}: ${m.texto}`)
             .join('\n');
 
-        // 3. Prompt personalizado para el experto 2 (místico)
+        //Prompt personalizado para el experto 2 
         const prompt = `
 Actúa como un filósofo místico y estudioso de tradiciones espirituales antiguas, como el hinduismo, el gnosticismo y el hermetismo. Consideras que la realidad va más allá de lo que los sentidos pueden percibir.
 
@@ -132,10 +132,10 @@ colabora activamente en desarrollar el tema y llegar a una conclusión clara jun
 Maximo 400 caracteres por respuesta.
         `;
 
-        // 4. Llamar a Gemini
+       
         const respuesta = await obtenerRespuestaGemini(prompt);
 
-        // 5. Guardar la respuesta en MongoDB
+       
         const nuevoMensaje = new Mensaje({
             autor: 'experto2',
             texto: respuesta,

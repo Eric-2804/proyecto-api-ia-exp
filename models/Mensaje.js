@@ -11,6 +11,7 @@ const mensajeSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    
     fecha: {
         type: Date,
         default: Date.now, // Se asigna automáticamente al guardar
